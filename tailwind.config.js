@@ -13,6 +13,7 @@ module.exports = {
         "black-bg": "#050405",
         "dark-shadow-color": "#63738175",
         "btn-color": "#564FB1",
+        "modal-bg": "#00000099",
       },
     },
   },

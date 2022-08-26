@@ -7,6 +7,11 @@ const SearchBox = ({ totalProfiles, searchProfiles }) => {
 
   const [showModal, setShowModal] = useState(false);
 
+  const handleModalClose = () => {
+    setShowModal(false);
+    document.body.style.overflow = "";
+  };
+
   const handleFormSubmit = e => {
     e.preventDefault();
 
@@ -19,7 +24,7 @@ const SearchBox = ({ totalProfiles, searchProfiles }) => {
         className={`${
           themeMode ? "bg-component-white-bg" : "bg-component-dark-bg"
         } w-11/12 sm:w-4/5 mx-auto 
-    grid sm:grid-cols-6 sm:grid-rows-1 grid-rows-3 grid-cols-1 items-center
+    grid md:grid-cols-6 md:grid-rows-1 grid-rows-3 grid-cols-1 items-center
     gap-3 px-6 py-4 rounded-lg`}
       >
         <span
@@ -55,15 +60,19 @@ const SearchBox = ({ totalProfiles, searchProfiles }) => {
 
         <button
           className="bg-btn-color text-white rounded lg:text-md 
-      sm:text-sm p-2 sm:p-3 col-span-1 sm:w-full w-8/12 mx-auto"
+      sm:text-sm p-2 sm:p-3 col-span-1 md:w-full w-8/12 mx-auto"
+          onClick={() => {
+            setShowModal(true);
+            document.body.style.overflow = "hidden";
+          }}
         >
           <i className="fa-solid fa-filter px-1 md:px-2"></i>Advance Filter
         </button>
       </div>
 
-      {!showModal && (
-        <div className="absolute bg-black opacity-30 p-4 inset-0">
-          <FilterModal setShowModal={setShowModal} />
+      {showModal && (
+        <div className="absolute overflow-auto bg-modal-bg p-4 inset-0">
+          <FilterModal handleModalClose={handleModalClose} />
         </div>
       )}
     </>
