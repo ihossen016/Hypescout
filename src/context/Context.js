@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 export const AppContext = createContext();
 
 const Context = ({ children }) => {
-  const url = "https://api-with-dummy-data.herokuapp.com/data";
+  const url = "https://aggressive-fly-bracelet.cyclic.app/data";
   const [totalData, setTotalData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchText, setSearchTxt] = useState("");
